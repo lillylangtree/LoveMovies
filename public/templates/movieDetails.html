@@ -1,0 +1,45 @@
+  
+<section class='container-fluid'>
+    <h1>{{title}}</h1>
+    <section class='row'>
+      <div class=" col-md-3 col-sm-3 col-xs-12">
+        <img ng-src="{{movie.Poster}}" class='img-responsive {{animateIn}}'>
+      </div>
+      <section  class="col-md-7 col-sm-9 col-xs-12">
+        <h1 class="">{{movie.Title}}</h1>
+        <p> Rating: {{ movie.imdbRating}} ({{movie.imdbVotes}})
+        <p>{{movie.Plot}}</p>
+        <p>Awards: {{movie.Awards}}</p>
+        <section class='row'>
+          <div class='col-md-10'>
+            <p class="" >Released: {{movie.Released | date: 'mediumDate'}}</p>
+          </div>
+          <div class='col-md-2'>
+            <button class='btn btn-primary'  ng-show='showFav' ng-click="addFavourite()" >Add Favourite</button>
+          </div>
+        </section>
+        
+        <hr/>
+        <section id='rotten' class='row'>
+           <h3 >Rotten Results</h3>  
+
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <p style='font-size: large'>TomatoMeter: {{movie.tomatoMeter}}%</p>
+            <p>Average Rating: {{movie.tomatoRating}}</p>
+            <p>Fresh: {{movie.tomatoFresh}} / Rotten: {{movie.tomatoRotten}}</p>
+            <p>Reviews: {{movie.tomatoReviews}}</p>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <h4>Critics Consensus</h4>            
+            <p>{{movie.tomatoConsensus}}</p>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <p style='font-size: large'>Audience Score: {{movie.tomatoUserMeter}}%</p>
+            <p>Average Rating: {{movie.tomatoUserRating}}/5</p>
+            <p>Reviews: {{movie.tomatoUserReviews}}</p>
+          </div>
+        </section>
+
+      </section>
+    </section>
+</section>

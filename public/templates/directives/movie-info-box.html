@@ -1,0 +1,14 @@
+<section class="panel panel-default poster" style="margin-bottom: 14px;
+												box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+												transition: all 0.3s ease-out;">
+	<div style='position: relative; width: 100%'>										
+	<img class='img-responsive' ng-src="{{movie.Poster}}" style="">
+	<div class="panel-heading" style="background-color: #B82266; opacity: 0.8; color: #ffffff ;
+										background-repeat: repeat-x;
+										background-image: linear-gradient(to bottom, #B82266 0px, #951C55 100%);
+										position: absolute; bottom: 0px;display: inline-block;width: inherit;">
+		<h3 class="panel-title" style="color: #fff; font-weight: bold">{{movie.Title}}</h3>
+	</div >
+	</div>
+	<div class="panel-footer" >Released: {{movie.Year}}</div>
+</section>

@@ -1,0 +1,210 @@
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    font-size: 1em;
+}
+
+body {
+    color: #435757;
+    background: radial-gradient(#7f7f7f, #dac4cd);
+}
+
+hr {
+    border-top: 2px solid black
+}
+select {
+    padding: 0.5em;
+    border-radius: 5px;
+    font-size: 1.4em;
+}
+div.homePage {
+    background: transparent;
+    font-size: large;
+}
+
+div.homePage h1 {
+    background: transparent;
+    font-size: 300%;
+}
+
+/* bootstrap overrides*/
+.redBorder {
+    border: 3px outset red;
+}
+
+movie-info-box {
+    border: 2px solid pink;
+}
+
+movie-nav {
+    margin-bottom: 20px;
+}
+
+/*.nav li a {padding: 0px; margin-left: 20px; outline: none; }*/
+.navbar {
+    border-radius: 0px
+}
+
+.nav li a:active {
+    outline: none;
+}
+
+.nav li a:focus {
+    outline: none;
+}
+
+.nav li a button:focus {
+    outline: none;
+}
+
+.nav li a button:active {
+    outline: none;
+}
+
+div.repeat:nth-child(6n+1) {
+    clear: both;
+}
+
+.list-inline {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.list-inline > li {
+    padding: 0px 0px;
+    padding-bottom: 0px;
+}
+
+.list-inline > li a {
+    font-size: 3vh;
+    font-size: 3vmax;
+    border-left: 0px solid #CCC;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 1px 0px rgba(83, 109, 141, 0.7) inset;
+}
+
+.list-inline > li > a:hover {
+    background-color: lightgrey;
+    text-decoration: none;
+}
+
+.list-inline > li > a.active {
+    background-color: #337AB7;
+    color: white;
+}
+
+.list-inline > li.selected {
+    border-bottom: 3px solid red;
+}
+
+.list-inline > li.selected:first-child > a {
+    border-left: medium none;
+    padding-left: 0px;
+    box-shadow: 0px 0px
+}
+
+/*a.navbar-brand { padding: 0px; padding-left: 20px;}*/
+a > .btn {
+    font-size: 3vh;
+    font-size: 3vmax;
+}
+
+.btnLink {
+    border: 3px solid grey;
+    padding: 5px;
+    margin: 60px;
+    font-size: large;
+    text-decoration: none;
+    color: grey;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+    margin-top: 0px
+}
+
+#rotten > h2, #rotten > h3, #rotten > h4 {
+    padding-left: 15px
+}
+
+div#rotten > p {
+    padding-left: 30px
+}
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    div.repeat:nth-child(3n+1) {
+        clear: both;
+    }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+    div.repeat:nth-child(2n+1) {
+        clear: both;
+    }
+
+    .navbar-brand > img {
+        display: none;
+    }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+
+    div.repeat:nth-child(2n+1) {
+        clear: both;
+    }
+
+    .navbar-brand > img {
+        display: none;
+    }
+}
+
+.fade.in {
+    opacity: 1;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.fade.out {
+    display: none;
+}
+
+/* when hiding the picture */
+.ng-hide-add {
+    animation: 1.5s lightSpeedOut ease;
+}
+
+/* when showing the picture */
+.ng-hide-remove {
+    animation: 1.5s flipInX ease;
+}
+
+.form-group .glyphicon {
+    top: 8px;
+    font-size: 24px
+}

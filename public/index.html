@@ -1,0 +1,60 @@
+<!doctype html>
+<html ng-app='moviesDBApp'>
+<head>
+    <title>Angular Movies DB Project</title>
+    <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="css/vendor/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    <script src="javascript/vendor/angular.min.js"></script>
+    <script src="javascript/vendor/angular-animate.min.js"></script>
+    <script src="javascript/vendor/angular-route.min.js"></script>
+    <script src="javascript/vendor/jquery-1.11.3.min.js"></script>
+    <script src="javascript/vendor/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-inverse">
+        <div class='container'>
+            <div class="nav navbar-header">
+                <a class="navbar-brand" href="#/home">LoveMovies</a>
+                <button type="button" class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target="#myCollapsingList">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myCollapsingList" ng-controller='MenuController'>
+                <form name='movieForm' class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <span class="glyphicon glyphicon-search search-icon" style="color:white"></span>
+                        <input type="text" name='movie' ng-model='movie' class="form-control" placeholder="Search Movies">
+                    </div>
+                    <button type="submit" ng-click='movieSearch()' class="btn btn-default">Go</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/favorites">My Favorites</a></li>
+                    <li><a href="#/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+<div ng-view></div>
+</body>
+
+<script src='javascript/app.js'></script>
+<script src='javascript/controller.js'></script>
+<script src='javascript/directive.js'></script>
+<script src='javascript/service.js'></script>
+<script src='javascript/directive-map.js'></script>
+
+
+</html>

@@ -1,0 +1,35 @@
+<style>
+.box {
+    
+    background-color: #0000FF;
+    opacity: 0;
+     -webkit-transition: background-color 2s, -webkit-transform 2s;
+    
+}
+#titles:hover p.box {
+    background-color: #FFCCCC;
+     opacity: 1;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    transition: opacity 2s, background-color 2s, transform 2s;
+}
+
+
+#titles:hover a {
+    color: red;
+}
+</style>
+<div class='container'>
+
+	<section class='homePage btnLinkHover' style='text-align: center'>
+		  <img class='animated bounceInDown' src='images/movies-logo-1.gif' style='text-align: center'/>
+		  <section id='titles'>
+		      <h1>Welcome To The Movies</h1>	  
+		      <p class=''>Search for all the latest and recent movies right now. </p>
+		      <p>See what the critics think and find reviews of your favourite movies !</p>
+		      <div style='margin-top: 30px'> 
+		      </div> 
+
+	      </section>
+	</section>
+</div>

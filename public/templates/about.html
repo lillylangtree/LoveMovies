@@ -1,0 +1,17 @@
+<div class='container'>
+    <h1>{{title}}</h1>
+
+    <section class="row">
+
+        <div class="col-md-3">
+            <h1>Our Locations</h1>
+            <select ng-model="map" ng-options="mapview.address for mapview in maps">
+            </select>
+        </div>
+        <div class="col-md-4">
+            <h3>{{map.address}}</h3>
+            <!-- flexible map , map object defined in controller directive -->
+            <ui-web-comp-make-map map="map"></ui-web-comp-make-map>
+        </div>
+    </section>
+</div>
