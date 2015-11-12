@@ -93,6 +93,7 @@ app.post('/favorites', function (req, res) {
 // the server will now start listening for requests e.g. /favourites
 // when the request is received it will be processed by the app.get()
 // functions, see above. 
-app.listen(3000, function () {
-    console.log("Listening on port 3000");
+var port = Number(process.env.PORT || 5000);
+app.listen(port, function() {
+    console.log("Listening on " + port);
 });
