@@ -1,7 +1,7 @@
 // defining the app module of the project
 angular.module('moviesDBApp', ['ngRoute', 'UIWebComp.directives', 'movieDBControllers', 'movieDBDirectives', 'movieDBServices'])
     .constant("myMovieConfig", {
-        "moviesEndpoint": "http://www.omdbapi.com/"
+        "moviesEndpoint": "https://www.omdbapi.com/"
     })
     .config(function ($routeProvider) {
         // use the HTML5 History API
