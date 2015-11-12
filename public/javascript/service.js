@@ -21,7 +21,9 @@ angular.module('movieDBServices',[])
     };
 
     function deleteFavorite(movie){
-        return $http.post('/deleteFavorite', movie);
+        return $http.delete('/deleteFavorite', {
+            params: {imdbID: movie.imdbID}
+        });
     };
 
     function getFavoritesList(url){

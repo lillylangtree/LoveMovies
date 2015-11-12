@@ -26,6 +26,10 @@ app.use(bodyParser.json());
 //
 app.get('/movies', function (req, res) {
 
+    if (!req.query.url) { //check get paramters for required fields
+        res.send("Error");
+        return
+    }
     var movieListUrl = req.query.url; // get the search url from the request
     https.get(movieListUrl, function (response) {
             console.log("statusCode: ", response.statusCode);
@@ -52,15 +56,17 @@ app.get('/favorites', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.send(data);
 });
-app.post('/deleteFavorite', function (req, res) {
-    if (!req.body.Title || !req.body.imdbID) { //check post data for required fields
+app.delete('/deleteFavorite', function (req, res) {
+    if (!req.query.imdbID) { //check parameter data for required fields
         res.send("Error");
         return
     }
+    var imdbID = req.query.imdbID; // get the imdbID from the request
+
     var data = JSON.parse(fs.readFileSync('./data.json')); //get existing data
     var idx = 0;
     for (var i = 0; i < data.length; i++) { //find movie in favorites list
-        if (data[i].imdbID === req.body.imdbID) {
+        if (data[i].imdbID === imdbID) {
             idx = i;
         }
     }
