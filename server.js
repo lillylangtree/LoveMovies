@@ -16,6 +16,7 @@ var fs = require('fs');
 var path = require('path');
 var bodyParser = require('body-parser');
 var http = require('http');
+var https = require('https');
 //
 app.use(express.static(path.join(__dirname, '/public')));
 //index.html will be served by default if '/' selected
@@ -26,7 +27,7 @@ app.use(bodyParser.json());
 app.get('/movies', function (req, res) {
 
     var movieListUrl = req.query.url; // get the search url from the request
-    http.get(movieListUrl, function (response) {
+    https.get(movieListUrl, function (response) {
             console.log("statusCode: ", response.statusCode);
             console.log("headers: ", response.headers);
 
