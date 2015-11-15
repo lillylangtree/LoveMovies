@@ -38,7 +38,7 @@ This will start the node server process.
 
 See package.json for how the npm start command works.
 
-Navigate to http;//localhost:<port number>
+Navigate to http://localhost:<port number>
 
 The port number will be displayed in the command tool
 
@@ -76,8 +76,14 @@ The node process contains the following resources
 
 The routing for the client side application can be seen in the app.js file under the /public
 directory.
+        in the app.js file you will see the html templates and associated template controller
+        The controller's can be viewed in the controller.js file
+        The templates are contained in the templates directory
 
-##Resources
+        All directives are contained in the directive.js file and directive-map.js file
+        templates for the directives are contrained in the templates/directives directory
+
+        The services used by the controllers are contained in the service.js file
 
 ##Deploying to Heroku
 

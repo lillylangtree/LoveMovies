@@ -1,4 +1,7 @@
 angular.module('movieDBDirectives',[]).directive('movieInfoBox', function() {
+    //directive displays movie information in a panel
+    //usage <movie-info-box info='movie'></movie-info-box>
+    //info value passed to directive becomes the scope of the directive, scope.movie
   return {
     restrict: 'AEC',    // usage of the directive: A -> attribute, E -> element, C -> class (default: EC)
     scope: {

@@ -1,3 +1,7 @@
+//directive displays static google
+//usage <make-map map='map'></make-map>
+//map value passed to directive becomes the scope of the directive, scope.map
+//map created in the controller and passed to the directive
 (function(){
 	'use strict';
 
