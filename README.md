@@ -1,4 +1,4 @@
-## lovemovies
+#lovemovies
 
 This application was built as an educational project to teach students the basics of node and angular
 it consists of a node server side and an angular client side.
@@ -27,8 +27,21 @@ https://jvaneyck.wordpress.com/2014/01/07/cross-domain-requests-in-javascript/
 The application 'persists' favorite movie data to a file in the same location as
 the server.js file, data.json
 
+##Installation
+=============
+To run the application once cloned or forked run the command
+>npm start
+In the root directory i.e. where server.js exists
+This will start the node server process.
+
+See package.json for how the npm start command works.
+
+Navigate to http;//localhost:<port number>
+
+The port number will be displayed in the command tool
+
 #Server side
-#-----------
+=============
 The node process contains the following resources
 
 /movies action:get
@@ -56,15 +69,15 @@ The node process contains the following resources
 
     deletes movies from data.json file
 
-#Angular Application
-#===================
+##Angular Application
+===================
 
 The routing for the client side application can be seen in the app.js file under the /public
 directory.
 
-Resources
+##Resources
 
-Deploying to Heroku
+##Deploying to Heroku
 
 Heroku requires a Profile to be present. This indicates the file name of the server process to be started via node.
 A Procfile is present in this project. No change is needed unless you change the name of the server file.

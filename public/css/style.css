@@ -40,75 +40,16 @@ movie-info-box {
     border: 2px solid pink;
 }
 
-movie-nav {
-    margin-bottom: 20px;
-}
-
 /*.nav li a {padding: 0px; margin-left: 20px; outline: none; }*/
 .navbar {
     border-radius: 0px
 }
 
-.nav li a:active {
-    outline: none;
-}
 
-.nav li a:focus {
-    outline: none;
-}
-
-.nav li a button:focus {
-    outline: none;
-}
-
-.nav li a button:active {
-    outline: none;
-}
-
-div.repeat:nth-child(6n+1) {
+div.repeat:nth-child(6n+1) { /*required to clear movies in next row */
     clear: both;
 }
 
-.list-inline {
-    margin-left: 20px;
-    margin-bottom: 20px;
-}
-
-.list-inline > li {
-    padding: 0px 0px;
-    padding-bottom: 0px;
-}
-
-.list-inline > li a {
-    font-size: 3vh;
-    font-size: 3vmax;
-    border-left: 0px solid #CCC;
-    padding-left: 10px;
-    padding-right: 10px;
-    box-shadow: 1px 0px rgba(83, 109, 141, 0.7) inset;
-}
-
-.list-inline > li > a:hover {
-    background-color: lightgrey;
-    text-decoration: none;
-}
-
-.list-inline > li > a.active {
-    background-color: #337AB7;
-    color: white;
-}
-
-.list-inline > li.selected {
-    border-bottom: 3px solid red;
-}
-
-.list-inline > li.selected:first-child > a {
-    border-left: medium none;
-    padding-left: 0px;
-    box-shadow: 0px 0px
-}
-
-/*a.navbar-brand { padding: 0px; padding-left: 20px;}*/
 a > .btn {
     font-size: 3vh;
     font-size: 3vmax;
