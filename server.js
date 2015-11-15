@@ -77,13 +77,13 @@ app.delete('/deleteFavorite', function (req, res) {
     var imdbID = req.query.imdbID; // get the imdbID from the request
 
     var data = JSON.parse(fs.readFileSync('./data.json')); //get existing data
-    var idx = 0;
+    var idx = -1;
     for (var i = 0; i < data.length; i++) { //find movie in favorites list
         if (data[i].imdbID === imdbID) {
             idx = i;
         }
     }
-    if (idx > 0)
+    if (idx >= 0)
         data.splice(idx, 1); //at the position of the movie remove that movie
                              //the splice function will remove the item at position idx
     fs.writeFile('./data.json', JSON.stringify(data)); //send back to file
