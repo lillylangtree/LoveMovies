@@ -68,10 +68,13 @@ a:hover {
     color: black;
     text-decoration: none;
 }
-
+a:hover div{
+    text-decoration: none;
+}
 h1, h2, h3, h4 {
     margin-top: 0px
 }
+th, td { font-size: 1.4em;padding: 5px}
 
 #rotten > h2, #rotten > h3, #rotten > h4 {
     padding-left: 15px
@@ -79,6 +82,19 @@ h1, h2, h3, h4 {
 
 div#rotten > p {
     padding-left: 30px
+}
+.centerContent {justify-content: center;  text-align: center}
+
+#titles:hover  {
+    background-color: #FFCCCC;
+    opacity: 1;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    transition: opacity 2s, background-color 2s, transform 2s;
+}
+
+#titles:hover a {
+    color: red;
 }
 /*==================================================
 =            Bootstrap 3 Media Queries             =
@@ -107,9 +123,6 @@ div#rotten > p {
         clear: both;
     }
 
-    .navbar-brand > img {
-        display: none;
-    }
 }
 
 /* Portrait phones and smaller */
@@ -117,10 +130,6 @@ div#rotten > p {
 
     div.repeat:nth-child(2n+1) {
         clear: both;
-    }
-
-    .navbar-brand > img {
-        display: none;
     }
 }
 
@@ -147,5 +156,6 @@ div#rotten > p {
 
 .form-group .glyphicon {
     top: 8px;
-    font-size: 24px
+    font-size: 24px;
+    color: white
 }

@@ -27,6 +27,8 @@ https://jvaneyck.wordpress.com/2014/01/07/cross-domain-requests-in-javascript/
 The application 'persists' favorite movie data to a file in the same location as
 the server.js file, data.json
 
+For a discussion of Angular and MVC frameworks see https://ilovemovies.herokuapp.com/document.html
+
 ##Installation
 =============
 To run the application once cloned or forked run the command
