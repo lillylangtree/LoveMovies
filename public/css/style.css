@@ -85,17 +85,8 @@ div#rotten > p {
 }
 .centerContent {justify-content: center;  text-align: center}
 
-#titles:hover  {
-    background-color: #FFCCCC;
-    opacity: 1;
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-    transition: opacity 2s, background-color 2s, transform 2s;
-}
 
-#titles:hover a {
-    color: red;
-}
+
 /*==================================================
 =            Bootstrap 3 Media Queries             =
 ==================================================*/
