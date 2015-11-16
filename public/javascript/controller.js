@@ -94,6 +94,10 @@ angular.module('movieDBControllers', [])
                 }
             );
         $scope.addFavourite = function(){//add movie to favourites, enabled by addFavorites button in view
+            var storeMovie = {}
+            storeMovie.Title = $scope.movie.Title;
+            storeMovie.imdbID = $scope.movie.imdbID;
+            storeMovie.Year = $scope.movie.Year;
             MovieListService.postFavorite($scope.movie).then(//success added to favorites list
                 function (result) {
                     if (result.status == 200 && result.statusText == 'OK') {
