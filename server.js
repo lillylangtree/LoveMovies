@@ -77,7 +77,7 @@ app.delete('/deleteFavorite', function (req, res) {
     var imdbID = req.query.imdbID; // get the imdbID from the request
 
     var data = JSON.parse(fs.readFileSync('./data.json')); //get existing data
-    var idx = -1;
+    var idx = -1; //set to -1 as 0 is a valid array index number
     for (var i = 0; i < data.length; i++) { //find movie in favorites list
         if (data[i].imdbID === imdbID) {
             idx = i;

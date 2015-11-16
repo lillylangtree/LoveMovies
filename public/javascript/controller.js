@@ -69,7 +69,7 @@ angular.module('movieDBControllers', [])
         //see service.js for details
         //myMovieConfig defined in the app.js file
         $scope.title = 'Movie Details';
-        $scope.showFav = true; //show add favorites button
+        $scope.showFav = false; //show add favorites button
         if ($routeParams.fromFavorites)
             $scope.showFav = false; //disable add favorites button
         var id = $routeParams.movieId;
@@ -78,7 +78,8 @@ angular.module('movieDBControllers', [])
             function (result) {
                 var movie = result.data;
                 $scope.movie = movie; //binding to view data
-                $scope.animateIn = "animated zoomInRight"
+                $scope.animateIn = "animated zoomInRight";
+                $scope.showFav = true; //enable favorite button
             }
             ,
             function (error) {
