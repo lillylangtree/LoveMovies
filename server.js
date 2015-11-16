@@ -105,7 +105,7 @@ app.post('/favorites', function (req, res) {
             idx = i;
         }
     }
-    if (idx == 0)     // 0 if not in list
+    if (idx == -1)     // -1 if not in list
         data.push(req.body); // add new movie data to favorites list
     fs.writeFile('./data.json', JSON.stringify(data)); //send back to file
     res.setHeader('Content-Type', 'application/json');
