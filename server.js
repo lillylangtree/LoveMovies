@@ -99,7 +99,7 @@ app.post('/favorites', function (req, res) {
         return
     }
     var data = JSON.parse(fs.readFileSync('./data.json')); //get existing data
-    var idx = 0;
+    var idx = -1;//set to -1 as 0 is a valid array index number
     for (var i = 0; i < data.length; i++) { //find movie in favorites list if already present
         if (data[i].imdbID === req.body.imdbID) { //use the imdbID as the key
             idx = i;

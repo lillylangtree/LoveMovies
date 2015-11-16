@@ -69,9 +69,8 @@ angular.module('movieDBControllers', [])
         //see service.js for details
         //myMovieConfig defined in the app.js file
         $scope.title = 'Movie Details';
-        $scope.showFav = false; //show add favorites button
-        if ($routeParams.fromFavorites)
-            $scope.showFav = false; //disable add favorites button
+        $scope.showFav = false; //disable add favorites button
+
         var id = $routeParams.movieId;
         var url = myMovieConfig.moviesEndpoint + '?i=' + id + '&r=json&tomatoes=true';
         MovieListService.getById(url).then(//success got movies details from api call
@@ -79,7 +78,12 @@ angular.module('movieDBControllers', [])
                 var movie = result.data;
                 $scope.movie = movie; //binding to view data
                 $scope.animateIn = "animated zoomInRight";
-                $scope.showFav = true; //enable favorite button
+
+                if ($routeParams.fromFavorites)
+                    $scope.showFav = false; //disable add favorites button
+                else
+                    $scope.showFav = true; //enable favorite button
+
             }
             ,
             function (error) {
@@ -98,7 +102,7 @@ angular.module('movieDBControllers', [])
             storeMovie.Title = $scope.movie.Title;
             storeMovie.imdbID = $scope.movie.imdbID;
             storeMovie.Year = $scope.movie.Year;
-            MovieListService.postFavorite($scope.movie).then(//success added to favorites list
+            MovieListService.postFavorite(storeMovie).then(//success added to favorites list
                 function (result) {
                     if (result.status == 200 && result.statusText == 'OK') {
                         $scope.showFav = false;//disable add favorites button
