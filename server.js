@@ -120,6 +120,7 @@ app.post('/favorites', function (req, res) {
 // note: if deploying to heroku the process.env.PORT setting is recommended
 // as the server may not start on their servers without this setting as they
 // may dynamically allocate a port setting when firing up the server process
+//
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
     console.log("Listening on " + port);
