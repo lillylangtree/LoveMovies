@@ -1,14 +1,14 @@
 {
-  "name": "js-coding-challenge",
+  "name": "iLoveMovies",
   "version": "0.0.0",
-  "description": "JS Server for WDI code challenge",
+  "description": "node/angular training project for students",
   "main": "server.js",
   "scripts": {
     "prestart": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Neel Patel <neelp22@gmail.com> (https://github.com/darthneel)",
+  "author": "Sean Cahill <sean@nmm.ie> (https://github.com/lillylangtree",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.12.0",

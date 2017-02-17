@@ -38,9 +38,10 @@ This will start the node server process.
 
 See package.json for how the npm start command works.
 
-Navigate to http://localhost:<port number>
+Navigate to http://localhost:(port number)
 
 The port number will be displayed in the command tool
+note: to change the port number edit the server.js file
 
 #Server side
 =============
