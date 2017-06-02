@@ -7,9 +7,9 @@ angular.module('movieDBServices', [])
         };
         function setMovie(title,imdbId,released){
             var storeMovie = {}
-            storeMovie.Title = title;
-            storeMovie.imdbID = imdbId;
-            storeMovie.Year = released;
+            storeMovie.title = title;
+            storeMovie.idIMDB = imdbId;
+            storeMovie.year = released;
 
             return storeMovie;
 
@@ -21,6 +21,7 @@ angular.module('movieDBServices', [])
         return {
             getList: getList,
             getById: getById,
+			getTrailerById: getTrailerById,
             getFavoritesList: getFavoritesList,
             postFavorite: postFavorite,
             deleteFavorite: deleteFavorite
@@ -47,6 +48,14 @@ angular.module('movieDBServices', [])
         };
 
         function getById(url) {           //get a movie with imdbID included in the url, constructed in the controller
-            return $http.get(url);       //url of form https://omdbapi.com?t=<imdbID>&r-json&tomatoes=true
-        };                             //tomatoes parameter give more details on movie
+            return $http.get('/movieDetails', {
+				params: {url: url}    
+            });					       
+        };
+		 
+		function getTrailerById(url) {           //get a movie trailer with imdbID included in the url, constructed in the controller
+           return $http.get('/movieTrailer', {   //url built in controller
+                params: {url: url}            
+            });
+        }; 
     });

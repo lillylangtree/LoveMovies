@@ -39,7 +39,66 @@ app.get('/movies', function (req, res) {
         return
     }
     var movieListUrl = req.query.url; // get the search url from the request
-    https.get(movieListUrl, function (response) {
+	console.log(req);
+    http.get(movieListUrl, function (response) {
+            console.log("statusCode: ", response.statusCode);
+            console.log("headers: ", response.headers);
+
+            var body = '';
+            response.on('data', function (d) { //getting data, append to body
+                console.log(d);
+                body += d;
+            });
+            response.on('end', function () {
+                // Data reception is done, return to requester!
+                var parsed = JSON.parse(body);
+                console.log(parsed);
+                res.setHeader('Content-Type', 'application/json');
+                res.send(parsed);
+            });
+        })
+        .on('error', function (e) {
+            console.error(e);
+        });
+
+});
+app.get('/movieTrailer', function (req, res) {
+    //this request should include a url for processing
+    //this url will make an api call based on the url value
+    if (!req.query.url) { //check get paramters for required fields
+        res.send("Error");
+        return
+    }
+    var movieTrailerUrl = req.query.url; // get the search url from the request
+    http.get(movieTrailerUrl, function (response) {
+            console.log("statusCode: ", response.statusCode);
+            console.log("headers: ", response.headers);
+
+            var body = '';
+            response.on('data', function (d) { //getting data, append to body
+                body += d;
+            });
+            response.on('end', function () {
+                // Data reception is done, return to requester!
+                var parsed = JSON.parse(body);
+                res.setHeader('Content-Type', 'application/json');
+                res.send(parsed);
+            });
+        })
+        .on('error', function (e) {
+            console.error(e);
+        });
+
+});
+app.get('/movieDetails', function (req, res) {
+    //this request should include a url for processing
+    //this url will make an api call based on the url value
+    if (!req.query.url) { //check get paramters for required fields
+        res.send("Error");
+        return
+    }
+    var movieDetailsUrl = req.query.url; // get the search url from the request
+    http.get(movieDetailsUrl, function (response) {
             console.log("statusCode: ", response.statusCode);
             console.log("headers: ", response.headers);
 
@@ -94,14 +153,14 @@ app.delete('/deleteFavorite', function (req, res) {
 app.post('/favorites', function (req, res) {
     //we want to store a new favourite movie to our favorites list
     //the dataset data.json need to be in the same directory location as this server file
-    if (!req.body.Title || !req.body.imdbID) { //check post data for required fields
+    if (!req.body.title || !req.body.idIMDB) { //check post data for required fields
         res.send("Error");
         return
     }
     var data = JSON.parse(fs.readFileSync('./data.json')); //get existing data
     var idx = -1;//set to -1 as 0 is a valid array index number
     for (var i = 0; i < data.length; i++) { //find movie in favorites list if already present
-        if (data[i].imdbID === req.body.imdbID) { //use the imdbID as the key
+        if (data[i].idIMDB === req.body.idIMDB) { //use the imdbID as the key
             idx = i;
         }
     }

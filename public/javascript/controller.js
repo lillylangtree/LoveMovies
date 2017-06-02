@@ -7,20 +7,22 @@ angular.module('movieDBControllers', [])
         //myMovieConfig set in app.js file
         $scope.loading = true;
         var search = $routeParams.movieTitle;
-        $scope.title = "Searched For Movies: '" + search + "'";
+        $scope.title = "Searching For Movies: '" + search + "'";
 
         getMovies(search);
 
         function getMovies(search) {
             var movies = search; // search string for searching movies, sent to url as parameter
             //construct url
-            var url = myMovieConfig.moviesEndpoint + '?' + 's=' + movies ;
+            var url = myMovieConfig.moviesEndpoint + '?' + 'title=' + movies + '&token=' +  
+						myMovieConfig.myapifilmstoken + '&format=json&limit=10';
 
             MovieListService.getList(url).then(//retrieve movies for display
                 function (result) { //success, got data back from api call
                     if (!result.data.Error) {
-                        $scope.movieList = result.data.Search.filter(function (val) {
-                            return val.Poster !== 'N/A' //filter out invalid movies
+						$scope.movieList = result.data.data.movies;
+                        $scope.movieList = result.data.data.movies.filter(function (val) {
+                            return val.urlPoster != null //filter out invalid movies
                         });
                         $scope.loading = false;
                     }
@@ -29,13 +31,9 @@ angular.module('movieDBControllers', [])
                 }
             ).catch(
                 function (error) { //error from api call
-                    console.log('error', error);
-                    if ( error.message)
-                        $location.path('/error/' + error.message + '/' + 'Error');
-                    else
-                        $location.path('/error/' + error.data.status_message + '/' + error.status);
-                });
-        }
+                    $location.path('/error/' + "Error Retrieving Movie Data" + '/' + '404')
+				})
+		}
     })
     .controller('MovieFavoritesController', function ($scope, MovieListService, $location) {
         //MovieListService is the service that has resources to obtain favourite movies list
@@ -54,7 +52,7 @@ angular.module('movieDBControllers', [])
                 }
             ).catch(
                 function (error) {
-                    $location.path('/error/' + error.data.status_message + '/' + error.status);
+                    $location.path('/error/' + "Error Retrieving Favourites Data" + '/' + '404');
                 });
         }
         $scope.deleteFavorite = function(movie) {//requested delete from favorites list, enabled by button in view
@@ -70,7 +68,7 @@ angular.module('movieDBControllers', [])
             );
         }
     })
-    .controller('MovieDetailsController', function ($scope, $location, $routeParams, MovieListService, MovieModelService,myMovieConfig) {
+    .controller('MovieDetailsController', function ($scope, $location, $sce, $routeParams, MovieListService,MovieModelService,myMovieConfig) {
         //show movie details
         //MovieListDervice contains functions to get movie details and add to favorites list
         //see service.js for details
@@ -80,10 +78,10 @@ angular.module('movieDBControllers', [])
         $scope.showFav = false; //disable add favorites button
 
         var id = $routeParams.movieId;
-        var url = myMovieConfig.moviesEndpoint + '?i=' + id + '&r=json&tomatoes=true';
+        var url = myMovieConfig.moviesEndpoint + '?idIMDB=' + id + '&token=' + myMovieConfig.myapifilmstoken;
         MovieListService.getById(url).then(//success got movies details from api call
             function (result) {
-                var movie = result.data;
+                var movie = result.data.data.movies[0];
                 $scope.movie = movie; //binding to view data
                 $scope.animateIn = "animated zoomInRight";
 
@@ -92,21 +90,50 @@ angular.module('movieDBControllers', [])
                 else
                     $scope.showFav = true; //enable favorite button
 
-            }
-            ,
-            function (error) {
-
-                $location.path('/error/' + error.data.status_message + '/' + error.status)
-            }
-            )
-            .catch(
+				
+				return(movie.idIMDB);
+				},
                 function (error) {
-
                     $location.path('/error/' + error.data.status_message + '/' + error.status)
                 }
+            )
+			.then(
+				function(imdbID){
+				 	var url = myMovieConfig.moviesTrailerEndPoint  + imdbID + '&token=' + myMovieConfig.myapifilmstoken;
+				 	MovieListService.getTrailerById(url).then(function(result) {
+						if (result.data.error) 
+							$scope.trailer = false;
+						else {
+
+						var trailer_id = result.data.data.trailer[0].trailer_id;
+				 		if (trailer_id.length > 0) {
+							console.log(trailer_id);
+							//$scope.$apply(function () {
+							$scope.trailer = true;
+							$scope.trailerSrc = $sce.trustAsResourceUrl("https://v.traileraddict.com/" + trailer_id);
+								//$scope.trailerSrc = $sce.trustAsResourceUrl(trailerSrc.data.trailer.src);
+							//});
+						}
+					    }
+					})
+				},
+                function (error) {
+                    $location.path('/error/' + error.data.status_message + '/' + error.status)
+                }
+			).catch(
+                function (error) {
+
+                    $location.path('/error/' + "Error Retrieving Trailer Data" + '/' + '404')
+                }
             );
+		$scope.showTrailer = function() {
+                      $scope.fadeIn = 'in'
+                    }
+		$scope.closeModal = function() {
+                      $scope.fadeIn = 'out'
+                    }	
         $scope.addFavourite = function(){//add movie to favourites, enabled by addFavorites button in view
-            var storeMovie = MovieModelService.setMovie($scope.movie.Title,$scope.movie.imdbID,$scope.movie.Year);
+            var storeMovie = MovieModelService.setMovie($scope.movie.title,$scope.movie.idIMDB,$scope.movie.year);
             MovieListService.postFavorite(storeMovie).then(//success added to favorites list
                 function (result) {
                     if (result.status == 200 && result.statusText == 'OK') {

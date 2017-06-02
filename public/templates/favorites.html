@@ -13,8 +13,8 @@
             <table>
                 <tr><th>Title</th><th>Released</th></tr>
                 <tr ng-repeat="movie in movieList">
-                    <td>{{movie.Title}}</td><td>{{movie.Year}}</td>
-                    <td><a href='#/movie/{{movie.imdbID}}/true' class="btn btn-primary">
+                    <td>{{movie.title}}</td><td>{{movie.releaseDate}}</td>
+                    <td><a href='#/movie/{{movie.idIMDB}}/true' class="btn btn-primary">
                         Details
                     </a></td>
                     <td> <button class='btn btn-danger' ng-click="deleteFavorite(movie)" >Remove</button></td>

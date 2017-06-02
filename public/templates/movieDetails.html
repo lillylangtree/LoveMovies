@@ -1,26 +1,30 @@
   
-<section class='container-fluid'>
+<section class='container'>
     <h1>{{title}}</h1>
     <section class='row'>
       <div class=" col-md-3 col-sm-3 col-xs-12">
-        <img ng-src="{{movie.Poster}}" class='img-responsive {{animateIn}}'>
+        <img ng-src="{{movie.urlPoster}}" class='img-responsive' {{animateIn}}>
       </div>
       <section  class="col-md-7 col-sm-9 col-xs-12">
-        <h1 class="">{{movie.Title}}</h1>
-        <p> Rating: {{ movie.imdbRating}} ({{movie.imdbVotes}})
-        <p>{{movie.Plot}}</p>
-        <p>Awards: {{movie.Awards}}</p>
+        <h1 class="">{{movie.title}} ({{movie.year}})</h1>
+       <p> Rating: {{ movie.rating}}     Vote Count ({{movie.votes}})</p>
+	<p> Rated: {{movie.rated}}</p>
+        <p>{{movie.plot}}</p>
+         
         <section class='row'>
-          <div class='col-md-10'>
-            <p class="" >Released: {{movie.Released | date: 'mediumDate'}}</p>
+          <div class='col-md-6'>
+            <p class="" >Released in : {{movie.year}}</p>
           </div>
-          <div class='col-md-2'>
+          <div class='col-md-3'>
             <button class='btn btn-primary'  ng-show='showFav' ng-click="addFavourite()" >Add Favourite</button>
           </div>
-        </section>
+		  <div class='col-md-3'>
+			<button class='btn btn-danger' ng-model='trailer' ng-click="showTrailer()" ng-show='trailer'>Show Trailer</button>
+          </div>
+		</section>
         
         <hr/>
-        <section id='rotten' class='row'>
+       <!-- <section id='rotten' class='row'>
            <h3 >Rotten Results</h3>  
 
           <div class="col-md-4 col-sm-4 col-xs-12">
@@ -38,8 +42,9 @@
             <p>Average Rating: {{movie.tomatoUserRating}}/5</p>
             <p>Reviews: {{movie.tomatoUserReviews}}</p>
           </div>
-        </section>
+        </section> -->
 
       </section>
     </section>
 </section>
+<movie-trailer trailer-src="trailerSrc" fade-in="fadeIn"><movie-trailer>

@@ -124,6 +124,11 @@ div#rotten > p {
     }
 }
 
+.modal-dialog .container-fluid {
+    padding-right: 0px; 
+    padding-left: 0px; 
+}
+
 .fade.in {
     opacity: 1;
     display: block;
